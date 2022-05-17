@@ -1,25 +1,28 @@
-import 'package:blindtube/Constants/colors&Styles.dart';
-import 'package:blindtube/pages/CommentPage.dart';
-import 'package:blindtube/videoplayer/VideoClick.dart';
+import 'package:blindtube/Constants/styles.dart';
+
+import '../../video_player/widgets/ChewieListItem.dart';
+import '../../video_player/widgets/VideoClick.dart';
+import '../../video_player/class/video.dart';
+import '../comment_page/CommentPage.dart';
+
 import 'package:flutter/material.dart';
 import 'package:blindtube/Constants/widgets.dart';
-import 'package:blindtube/videoplayer/ChewieListItem.dart';
+
 import 'package:video_player/video_player.dart';
-import 'package:blindtube/Constants/functions.dart';
 
 class VideoPage extends StatefulWidget {
-  VideoPage(
-      {required this.userName,
-      required this.VideoLocation,
-      required this.videoTitle,
-      required this.RelatedVideos,
-      required this.RelatedTitles});
+  const VideoPage(
+      {Key? key,
+      required this.userName,
+      required this.video,
+      required this.relatedVideos,
+      required this.relatedVidFunc})
+      : super(key: key);
 
-  String userName;
-  String VideoLocation;
-  String videoTitle;
-  List RelatedVideos;
-  List RelatedTitles;
+  final String userName;
+  final Function relatedVidFunc;
+  final Video video;
+  final List relatedVideos;
 
   @override
   _VideoPageState createState() => _VideoPageState();
@@ -35,7 +38,7 @@ class _VideoPageState extends State<VideoPage> {
       floatingActionButton: Visibility(
         visible: isSwitched,
         child: FloatingActionButton(
-          child: Icon(
+          child: const Icon(
             Icons.comment,
             size: 30,
           ),
@@ -44,14 +47,14 @@ class _VideoPageState extends State<VideoPage> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => CommentPage(Username: widget.userName)),
+                  builder: (context) => CommentPage(userName: widget.userName)),
             );
           },
         ),
       ),
       appBar: BlindSideAppBar(),
       body: SingleChildScrollView(
-        physics: ScrollPhysics(),
+        physics: const ScrollPhysics(),
         child: Column(
           children: [
             SizedBox(
@@ -59,15 +62,15 @@ class _VideoPageState extends State<VideoPage> {
               height: 250,
               child: ChewieListItem(
                   videoPlayerController: VideoPlayerController.asset(
-                      'videos/${widget.VideoLocation}.mp4'),
+                      'videos/${widget.video.link}.mp4'),
                   looping: true),
             ),
-            Text(widget.videoTitle, style: VideoTitleStyle),
-            SizedBox(
+            Text(widget.video.title, style: VideoTitleStyle),
+            const SizedBox(
               height: 30,
             ),
             Row(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
-              Text(
+              const Text(
                 "Comments",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
@@ -84,26 +87,21 @@ class _VideoPageState extends State<VideoPage> {
             ]),
             ListView.builder(
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: widget.RelatedVideos.length,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: widget.relatedVideos.length,
               itemBuilder: (context, index) {
                 return VideoClick(
-                    name: widget.RelatedVideos[index],
-                    title: widget.RelatedTitles[index],
+                    video: widget.relatedVideos[index],
                     onPressed: () {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                           builder: (context) => VideoPage(
                             userName: widget.userName,
-                            VideoLocation: widget.RelatedVideos[index],
-                            videoTitle: widget.RelatedTitles[index],
-                            RelatedVideos: relatedVids(
-                                widget.RelatedVideos[index][0],
-                                widget.RelatedVideos[index]),
-                            RelatedTitles: relatedTitles(
-                                widget.RelatedVideos[index][0],
-                                widget.RelatedTitles[index]),
+                            video: widget.relatedVideos[index],
+                            relatedVidFunc: widget.relatedVidFunc,
+                            relatedVideos: widget
+                                .relatedVidFunc(widget.relatedVideos[index]),
                           ),
                         ),
                       );

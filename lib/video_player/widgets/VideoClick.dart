@@ -1,14 +1,19 @@
-import 'package:blindtube/Constants/colors&Styles.dart';
+import 'package:blindtube/Constants/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:blindtube/Constants/widgets.dart';
+
+import '../class/video.dart';
+
+
+
+
 
 
 class VideoClick extends StatelessWidget {
   VideoClick(
-      {required this.name, required this.title,required this.onPressed});
+      {required this.video,required this.onPressed});
 
-  String name;
-  String title;
+ Video video;
   void Function() onPressed;
 
   @override
@@ -23,11 +28,11 @@ class VideoClick extends StatelessWidget {
               width: 200,
               height: 150,
               child: Image.asset(
-                'images/$name.png',
+                'images/${video.link}.png',
               ),
             ),
             Text(
-              title,
+              video.title,
               style: VideoTitleStyle,
             ),
           ],

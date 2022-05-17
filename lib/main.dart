@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:blindtube/pages/LandingPage.dart';
+
+import 'package:blindtube/pages/landing_page/LandingPage.dart';
+
 void main() {
   runApp(MyApp());
 }

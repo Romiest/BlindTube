@@ -1,17 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:blindtube/Constants/widgets.dart';
-import 'package:blindtube/Constants/colors&Styles.dart';
-import 'package:blindtube/videoplayer/VideoClick.dart';
-import 'package:blindtube/pages/VideoPage.dart';
-import 'package:blindtube/Constants/functions.dart';
+import 'package:blindtube/Constants/styles.dart';
+
+
+
+import '../../video_player/widgets/VideoClick.dart';
+import '../../video_player/class/video.dart';
+import '../video_page/VideoPage.dart';
+
+
+
 
 class OverViewPage extends StatelessWidget {
-  OverViewPage(
-      {required this.userName, required this.videos, required this.Titles});
+  const OverViewPage({Key? key, required this.userName, required this.videos})
+      : super(key: key);
 
-  List videos;
-  List Titles;
-  String userName;
+  final List<Video> videos;
+  final String userName;
+
+  List relatedVids(Video video) {
+    List<Video> ans = [];
+    for (int i = 0; i < videos.length; i++) {
+      if (videos[i].tag == video.tag && videos[i] != video) {
+        ans.add(videos[i]);
+      }
+    }
+
+    return ans;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,32 +37,28 @@ class OverViewPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.only(top: 10),
         child: SingleChildScrollView(
-          physics: ScrollPhysics(),
+          physics: const ScrollPhysics(),
           child: Column(children: <Widget>[
             Text(
-              'hello ${userName} , here are your videos for today',
+              'hello $userName , here are your videos for today',
               style: WelcomingStyle,
             ),
             ListView.builder(
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemCount: videos.length,
                 itemBuilder: (context, index) {
                   return VideoClick(
-                    name: videos[index],
-                    title: Titles[index],
+                    video: videos[index],
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => VideoPage(
                             userName: userName,
-                            VideoLocation: videos[index],
-                            videoTitle: Titles[index],
-                            RelatedVideos:
-                                relatedVids(videos[index][0], videos[index]),
-                            RelatedTitles:
-                                relatedTitles(videos[index][0], Titles[index]),
+                            video: videos[index],
+                            relatedVideos: relatedVids(videos[index]),
+                            relatedVidFunc: relatedVids,
                           ),
                         ),
                       );
