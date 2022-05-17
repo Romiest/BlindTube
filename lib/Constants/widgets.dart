@@ -32,14 +32,4 @@ class BlindSideAppBar extends StatelessWidget with PreferredSizeWidget {
 
 
 
-class YellowLine extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      child: Divider(
-        color: kblindColor,
-        thickness: 1,
-      ),
-    );
-  }
-}
+

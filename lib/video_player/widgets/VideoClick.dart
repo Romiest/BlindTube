@@ -1,6 +1,7 @@
 import 'package:blindtube/Constants/styles.dart';
+import 'package:blindtube/video_player/widgets/yellow_line.dart';
 import 'package:flutter/material.dart';
-import 'package:blindtube/Constants/widgets.dart';
+
 
 import '../class/video.dart';
 
