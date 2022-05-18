@@ -1,12 +1,12 @@
 import 'package:blindtube/Constants/styles.dart';
 
-import '../../video_player/widgets/ChewieListItem.dart';
-import '../../video_player/widgets/VideoClick.dart';
+import '../../video_player/widgets/chewie_list_item.dart';
+import '../../video_player/widgets/video_click.dart';
 import '../../video_player/class/video.dart';
-import '../comment_page/CommentPage.dart';
+import '../comment_page/comment_page.dart';
 
 import 'package:flutter/material.dart';
-import 'package:blindtube/Constants/widgets.dart';
+import 'package:blindtube/Constants/app_bar.dart';
 
 import 'package:video_player/video_player.dart';
 
@@ -42,7 +42,7 @@ class _VideoPageState extends State<VideoPage> {
             Icons.comment,
             size: 30,
           ),
-          backgroundColor: kblindColor,
+          backgroundColor: kBlindColor,
           onPressed: () {
             Navigator.push(
               context,
@@ -65,7 +65,7 @@ class _VideoPageState extends State<VideoPage> {
                       'videos/${widget.video.link}.mp4'),
                   looping: true),
             ),
-            Text(widget.video.title, style: VideoTitleStyle),
+            Text(widget.video.title, style: kVideoTitleStyle),
             const SizedBox(
               height: 30,
             ),
@@ -81,7 +81,7 @@ class _VideoPageState extends State<VideoPage> {
                     isSwitched = value;
                   });
                 },
-                activeTrackColor: kblindColor,
+                activeTrackColor: kBlindColor,
                 activeColor: Colors.white,
               ),
             ]),
@@ -100,8 +100,7 @@ class _VideoPageState extends State<VideoPage> {
                             userName: widget.userName,
                             video: widget.relatedVideos[index],
                             relatedVidFunc: widget.relatedVidFunc,
-                            relatedVideos: widget
-                                .relatedVidFunc(widget.relatedVideos[index]),
+                            relatedVideos: widget.relatedVidFunc(widget.relatedVideos[index]),
                           ),
                         ),
                       );

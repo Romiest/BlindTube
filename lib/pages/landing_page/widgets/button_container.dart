@@ -15,7 +15,7 @@ class ButtonContainer extends StatelessWidget {
       height: 50,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(35),
-        color: kblindColor,
+        color: kBlindColor,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,

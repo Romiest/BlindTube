@@ -10,14 +10,15 @@ Widget commentChild(data) {
             leading: GestureDetector(
               onTap: () async {
                 // Display the image in large form.
-                print("Comment Clicked");
+                  print("Comment Clicked");
+
               },
               child: Container(
                 height: 50.0,
                 width: 50.0,
-                decoration: new BoxDecoration(
+                decoration: const BoxDecoration(
                     color: Colors.blue,
-                    borderRadius: new BorderRadius.all(Radius.circular(50))),
+                    borderRadius: BorderRadius.all(Radius.circular(50))),
                 child: CircleAvatar(
                     radius: 50,
                     backgroundImage: NetworkImage(data[i]['pic'] + "$i")),
@@ -25,14 +26,14 @@ Widget commentChild(data) {
             ),
             title: Text(
               data[i]['name'],
-              style: TextStyle(fontWeight: FontWeight.w900,
+              style: const TextStyle(fontWeight: FontWeight.w900,
               fontStyle: FontStyle.italic,
                 color: Colors.grey,
                 fontSize: 30
               ),
             ),
             subtitle: Text(data[i]['message'],
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 20,
             ),

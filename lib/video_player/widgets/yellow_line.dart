@@ -9,7 +9,7 @@ class YellowLine extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: Divider(
-        color: kblindColor,
+        color: kBlindColor,
         thickness: 1,
       ),
     );

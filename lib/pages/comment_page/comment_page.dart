@@ -1,8 +1,8 @@
 import 'package:blindtube/Constants/styles.dart';
-import 'package:blindtube/Constants/widgets.dart';
+import 'package:blindtube/Constants/app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:comment_box/comment/comment.dart';
-import 'package:blindtube/comments/commentChild.dart';
+import 'widgets/commentChild.dart';
 class CommentPage extends StatefulWidget {
   const CommentPage({Key? key, required this.userName}) : super(key: key);
    final String userName;

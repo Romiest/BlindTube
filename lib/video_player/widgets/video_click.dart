@@ -11,11 +11,11 @@ import '../class/video.dart';
 
 
 class VideoClick extends StatelessWidget {
-  VideoClick(
-      {required this.video,required this.onPressed});
+  const VideoClick(
+      {Key? key, required this.video,required this.onPressed}) : super(key: key);
 
- Video video;
-  void Function() onPressed;
+ final Video video;
+ final void Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +34,11 @@ class VideoClick extends StatelessWidget {
             ),
             Text(
               video.title,
-              style: VideoTitleStyle,
+              style: kVideoTitleStyle,
             ),
           ],
         ),
-        YellowLine(),
+        const YellowLine(),
       ],
 
       ),

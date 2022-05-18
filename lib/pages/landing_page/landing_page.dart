@@ -4,13 +4,15 @@ import 'package:blindtube/pages/landing_page/widgets/enter_user_text.dart';
 import 'package:blindtube/pages/landing_page/widgets/show_alert_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:blindtube/Constants/styles.dart';
-import 'package:blindtube/Constants/widgets.dart';
+import 'package:blindtube/Constants/app_bar.dart';
 
 import '../../video_player/class/video.dart';
-import '../over_view_page/OverViewPage.dart';
+import '../over_view_page/over_view_page.dart';
 
 
 class LandingPage extends StatelessWidget {
+
+   LandingPage({Key? key}) : super(key: key);
 
   final myController = TextEditingController();
   final List<Video> videos = [
@@ -22,6 +24,8 @@ class LandingPage extends StatelessWidget {
     Video(link: "dogs3", title: "slow mo", tag: "dogs"),
 
   ];
+
+
 
   @override
   Widget build(BuildContext context) {

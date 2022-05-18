@@ -12,7 +12,7 @@ class EnterUserText extends StatelessWidget {
         children: <Widget>[
           Icon(
             Icons.person_pin,
-            color: kblindColor,
+            color: kBlindColor,
             size: 45,
           ),
           SizedBox(

@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:blindtube/Constants/widgets.dart';
+import 'package:blindtube/Constants/app_bar.dart';
 import 'package:blindtube/Constants/styles.dart';
-
-
-
-import '../../video_player/widgets/VideoClick.dart';
+import '../../video_player/widgets/video_click.dart';
 import '../../video_player/class/video.dart';
-import '../video_page/VideoPage.dart';
+import '../video_page/video_page.dart';
 
 
 
@@ -18,7 +15,7 @@ class OverViewPage extends StatelessWidget {
   final List<Video> videos;
   final String userName;
 
-  List relatedVids(Video video) {
+  List<Video> relatedVids(Video video) {
     List<Video> ans = [];
     for (int i = 0; i < videos.length; i++) {
       if (videos[i].tag == video.tag && videos[i] != video) {
@@ -41,7 +38,7 @@ class OverViewPage extends StatelessWidget {
           child: Column(children: <Widget>[
             Text(
               'hello $userName , here are your videos for today',
-              style: WelcomingStyle,
+              style: kWelcomingStyle,
             ),
             ListView.builder(
                 shrinkWrap: true,
