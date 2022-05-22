@@ -13,7 +13,6 @@ class BlindSideAppBar extends StatelessWidget with PreferredSizeWidget {
         title: Center(
           child: Image.asset(
             'images/blind.png',
-            fit: BoxFit.cover,
           ),
         ),
       ),
