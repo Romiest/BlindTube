@@ -1,16 +1,8 @@
 # blindtube
 
-A new Flutter application.
+A video playing platform where u can view videos,add comments and have related videos recommendations for you .
 
-## Getting Started
+implemented in flutter/dart
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+in order for you to install the app you need to have android studio installed and the dart sdk and then you can go ahead and run the main.dart file
+with your favourite emmulator and you are good to go
